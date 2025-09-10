@@ -2,9 +2,9 @@ import 'package:bloc_tutorial/ui/counter_screen.dart';
 import 'package:bloc_tutorial/ui/main_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../bloc/article_list_bloc.dart';
+import '../bloc/article_list/article_list_bloc.dart';
 import '../bloc_provider/bloc_provider.dart';
-import '../data/article.dart';
+import '../model/article.dart';
 import 'article_list_item.dart';
 class ArticleListScreen extends StatelessWidget {
   const ArticleListScreen({Key? key}) : super(key: key);

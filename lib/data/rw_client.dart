@@ -41,7 +41,7 @@ import 'dart:async';
 import 'dart:convert' show json;
 import 'package:http/http.dart' as http;
 
-import 'article.dart';
+import '../model/article.dart';
 
 class RWClient {
   final _host = 'api.raywenderlich.com';

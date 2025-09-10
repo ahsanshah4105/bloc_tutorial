@@ -1,5 +1,7 @@
+import 'package:bloc_tutorial/bloc/favourite/favourite_bloc.dart';
 import 'package:bloc_tutorial/ui/article_list_screen.dart';
 import 'package:bloc_tutorial/ui/counter_screen.dart';
+import 'package:bloc_tutorial/ui/favourite_screen.dart';
 import 'package:bloc_tutorial/ui/image_picker_screen.dart';
 import 'package:bloc_tutorial/ui/switch_screen.dart';
 import 'package:bloc_tutorial/ui/to_do_screen.dart';
@@ -62,7 +64,7 @@ class _MainScreenState extends State<MainScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (_) => BlocProvider(
-                          create: (_) => ImagePickerBloc(ImagePickerUtils()),
+                          create: (_) => ImagePickerBloc(imagePickerUtils: ImagePickerUtils()),
                           child: const ImagePickerScreen(),
                         ),
                       ),
@@ -97,6 +99,20 @@ class _MainScreenState extends State<MainScreen> {
                     MaterialPageRoute(builder: (context) => const ArticleListScreen()),
                   ),
                   child: const Text('Move To Article List Screen'),
+                ),
+              ),
+            ),
+            SizedBox(height: 50,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: SizedBox(
+                width: double.infinity, // 👈 takes full width
+                child: ElevatedButton(
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const FavouriteScreen()),
+                  ),
+                  child: const Text('Move To Favourite List Screen'),
                 ),
               ),
             ),

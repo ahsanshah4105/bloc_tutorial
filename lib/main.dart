@@ -1,3 +1,5 @@
+import 'package:bloc_tutorial/bloc/favourite/favourite_bloc.dart';
+import 'package:bloc_tutorial/repository/favourite_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,7 +11,7 @@ import 'bloc/to_do/to_do_bloc.dart';
 import 'utils/image_picker_utils.dart';
 import 'ui/app_colors.dart';
 import 'ui/main_screen.dart';
-import 'bloc/article_list_bloc.dart';
+import 'bloc/article_list/article_list_bloc.dart';
 import 'bloc_provider/bloc_provider.dart';
 
 void main() {
@@ -29,8 +31,9 @@ class ArticleFinder extends StatelessWidget {
         providers: [
           BlocProvider(create: (_) => CounterBloc()),
           BlocProvider(create: (_) => SwitchBloc()),
-          BlocProvider(create: (_) => ImagePickerBloc(ImagePickerUtils())),
+          BlocProvider(create: (_) => ImagePickerBloc(imagePickerUtils: ImagePickerUtils())),
           BlocProvider(create: (_) => ToDoBloc()),
+          BlocProvider(create: (_) => FavouriteBloc(favouriteRepository: FavouriteRepository()))
         ],
         child: MaterialApp(
           title: 'RW Finder',

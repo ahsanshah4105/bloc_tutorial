@@ -39,7 +39,7 @@
 ///
 import 'package:intl/intl.dart';
 
-import 'article.dart';
+import '../model/article.dart';
 
 final _releaseDateFormat = DateFormat('MMM d yyyy');
 

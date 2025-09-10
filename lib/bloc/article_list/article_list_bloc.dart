@@ -1,9 +1,8 @@
 import 'dart:async';
 
-import 'package:bloc_tutorial/bloc/bloc.dart';
 import 'package:bloc_tutorial/data/rw_client.dart';
-
-import '../data/article.dart';
+import '../../model/article.dart';
+import 'bloc.dart';
 
 class ArticleListBloc implements Bloc {
   final _client = RWClient();

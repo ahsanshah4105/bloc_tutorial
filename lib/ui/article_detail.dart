@@ -42,7 +42,7 @@ import 'package:bloc_tutorial/data/article_formatter_extension.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../data/article.dart';
+import '../model/article.dart';
 
 class ArticleDetail extends StatelessWidget {
   final Article article;

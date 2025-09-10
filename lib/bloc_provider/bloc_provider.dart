@@ -1,6 +1,7 @@
 // 1
-import '../bloc/bloc.dart';
 import 'package:flutter/material.dart';
+
+import '../bloc/article_list/bloc.dart';
 class BlocProviders<T extends Bloc> extends StatefulWidget {
   final Widget child;
   final T bloc;
