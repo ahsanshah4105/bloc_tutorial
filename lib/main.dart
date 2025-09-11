@@ -3,6 +3,7 @@ import 'package:bloc_tutorial/repository/favourite_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'bloc/counter/counter_bloc.dart';
 import 'bloc/image_picker/image_picker_bloc.dart';
@@ -14,23 +15,28 @@ import 'ui/main_screen.dart';
 import 'bloc/article_list/article_list_bloc.dart';
 import 'bloc_provider/bloc_provider.dart';
 
-void main() {
-  runApp(const ArticleFinder());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final preferences = await SharedPreferences.getInstance();
+
+  runApp(ArticleFinder(preferences: preferences));
 }
 
 class ArticleFinder extends StatelessWidget {
-  const ArticleFinder({Key? key}) : super(key: key);
+  final SharedPreferences preferences;
+  const ArticleFinder({Key? key, required this.preferences}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final w700BitterFont = GoogleFonts.bitter(fontWeight: FontWeight.w700);
 
     return BlocProviders<ArticleListBloc>(
-      bloc: ArticleListBloc(), // ✅ your custom bloc provider
+      bloc: ArticleListBloc(),
       child: MultiBlocProvider(
         providers: [
           BlocProvider(create: (_) => CounterBloc()),
-          BlocProvider(create: (_) => SwitchBloc()),
+          BlocProvider(create: (_) => SwitchBloc(preferences: preferences)),
           BlocProvider(create: (_) => ImagePickerBloc(imagePickerUtils: ImagePickerUtils())),
           BlocProvider(create: (_) => ToDoBloc()),
           BlocProvider(create: (_) => FavouriteBloc(favouriteRepository: FavouriteRepository()))

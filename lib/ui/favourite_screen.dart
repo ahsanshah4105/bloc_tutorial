@@ -52,17 +52,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
 
         },
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     // ✅ simulate adding new item
-      //     final newItem = FavouriteItemModel(
-      //       id: DateTime.now().toString(),
-      //       value: "New Item",
-      //     );
-      //     context.read<FavouriteBloc>().add(AddFavouriteItem(newItem));
-      //   },
-      //   child: const Icon(Icons.add),
-      // ),
+
     );
   }
 }

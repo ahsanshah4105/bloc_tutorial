@@ -31,16 +31,22 @@ class FavouriteBloc extends Bloc<FavouriteEvent, FavouriteState> {
   }
 
   void _toggleFavouriteStatus(
-      ToggleFavouriteStatus event, Emitter<FavouriteState> emit) {
+      ToggleFavouriteStatus event, Emitter<FavouriteState> emit) async {
     final updatedList = state.favouriteItemList.map((item) {
       if (item.id == event.itemId) {
-        return item.copyWith(isFavourite: !item.isFavourite);
+        final updatedItem = item.copyWith(isFavourite: !item.isFavourite);
+
+        // persist to DB
+        favouriteRepository.upsertFavourite(updatedItem);
+
+        return updatedItem;
       }
       return item;
     }).toList();
 
     emit(state.copyWith(favouriteItemList: updatedList));
   }
+
 
 
 }
